@@ -1,0 +1,21 @@
+<template name="appointmentList">
+  <div class="hidden">{{resetAppointments}}</div>
+  {{#if loading}}
+    {{> spinner}}
+  {{else}}
+    {{#if appointmentLoaded}}
+    {{#each appointments}}
+      {{> appointmentItem}}
+    {{/each}}
+    {{else}}
+    <div class="jumbotron">
+    <h1>No upcoming appointments</h1>
+    <p>You do not have any future appointments.</p>
+    </div>
+    {{/if}}
+  {{/if}}
+
+  {{#if appointmentsInThePast}}
+    <button class="btn btn-primary btn-block btnShowHidePast">{{showOrHide}} Past Appointments</button>
+  {{/if}}
+</template>

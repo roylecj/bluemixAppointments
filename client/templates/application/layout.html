@@ -1,0 +1,15 @@
+<template name="layout">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <div class="container-fluid">
+
+    {{> header}}
+    {{> sAlert}}
+
+    <div id="main">
+      {{> yield}}
+    </div>
+  </div>
+</template>

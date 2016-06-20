@@ -1,0 +1,106 @@
+<template name="appointmentItem">
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix">
+      <h2 class="panel-title pull-left">{{appointmentTypeName}}  ({{daysAway}})</h2>
+
+      {{#if pageShown '1'}}
+      <div class="pull-right label-info">SUMMARY</div>
+      {{else}}
+        {{#if pageShown '2'}}
+        <div class="pull-right label-danger"><span class="glyphicon glyphicon-fire"></span> FHIR Text</div>
+        {{else}}
+        <div class="pull-right label-danger"><span class="glyphicon glyphicon-fire"></span> FHIR Response</div>
+        {{/if}}
+      {{/if}}
+
+    </div>
+
+      <div class="list-group">
+        {{#if pageShown '1'}}
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">
+                <button class="btn btn-small btn-info">
+                  <span class="glyphicon glyphicon-calendar"></span></button>
+                    {{appointmentDateTime}}
+              </h4>
+
+              <h4 class="list-group-item-heading">
+                    <button class="btn btn-small btn-info">
+                      <span class="glyphicon glyphicon-time"></span></button>
+                        {{duration}} mins
+                  </h4>
+
+                  <h4 class="list-group-item-heading">
+                        <button class="btn btn-small btn-success">
+                          <span class="glyphicon glyphicon-ok"></span></button>
+                            {{statusCode}}
+                      </h4>
+
+                      <h4 class="list-group-item-heading">
+                            <button class="btn btn-small btn-info">
+                              <span class="glyphicon glyphicon-user"></span></button>
+                                {{clinician}}
+                          </h4>
+
+                          <h4 class="list-group-item-heading">
+                              <button class="btn btn-small btn-info mapItem">
+                                <span class="glyphicon glyphicon-map-marker"></span></button>
+                                  {{location}}
+                            </h4>
+
+                            {{#if mapShown}}
+                            <div class="map-container">
+                              {{> googleMap name="exampleMap" options=exampleMapOptions}}
+                            </div>
+                            {{/if}}
+        </div>
+
+
+        {{#if phoneFound}}
+        {{#if detailAvailable}}
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading"><a href="tel:{{sitePhone}}" class="btn btn-small btn-info"><span class="glyphicon glyphicon-earphone"></span></a> {{sitePhone}}</h4>
+        </div>
+        {{/if}}
+        {{/if}}
+        {{#if instructionsFound}}
+        <div class="list-group-item">
+          <p class="list-group-item-text"><span class="glyphicon glyphicon-flag"></span>
+          {{instructions}}</p>
+        </div>
+        {{/if}}
+        {{else}}
+
+        {{#if pageShown '2'}}
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">FHIR Text</h4>
+          {{{appointmentNotes}}}
+        </div>
+        {{else}}
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading">FHIR Response</h4>
+          {{{fhirMessage}}}
+        </div>
+
+        {{/if}}
+        {{/if}}
+      </div>
+      <div class="panel-footer">
+        {{#if pageShown '1'}}
+        {{else}}
+        <a class="btn btn-primary pull-left btnPrevPage" href="#">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        {{/if}}
+
+        {{#if pageShown '3'}}
+         {{else}}
+
+        <a class="btn btn-primary pull-right btnNextPage" href="#">
+         <span class="glyphicon glyphicon-chevron-right"></span>
+       </a>
+
+         {{/if}}
+       </div>
+  </div>
+</template>

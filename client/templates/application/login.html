@@ -1,0 +1,59 @@
+<template name="login">
+
+  <form class="main form page">
+
+  <div class="form-group">
+    <label class="control-label" for="loginName">Login</label>
+    <div class="controls">
+        <input name="loginName" id="loginName" type="text" value="" placeholder="" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="passowrd">Password</label>
+    <div class="controls">
+      <input name="password" id="password" type="password" value="" placeholder="" class="form-control"/>
+    </div>
+  </div>
+
+  {{#if newUser}}
+
+  <div class="form-group">
+    <label class="control-label" for="confirmPassword">Confirm Password</label>
+    <div class="controls">
+      <input name="confirmPassword" id="confirmPassword" type="password" value="" placeholder="" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="activationCode">Activation Code</label>
+    <div class="controls">
+        <input name="activationCode" id="activationCode" type="text" value="" placeholder="" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="nickname">Device Nickname</label>
+    <div class="controls">
+        <input name="nickname" id="nickname" type="text" value="" placeholder="" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="yourName">Your Name</label>
+    <div class="controls">
+        <input name="yourName" id="yourName" type="text" value="" placeholder="" class="form-control"/>
+    </div>
+  </div>
+  {{/if}}
+
+  <input type="button" value="{{createUserText}}" class="btn {{createUserStatus}} btnNewUser"/>
+  <input type="submit" value="Login" class="btn btn-primary"/>
+
+  {{#if newUser}}
+    <input type="button" value="Cancel" class="btn btn-danger btnCancel pull-right"/>
+  {{/if}}
+
+</form>
+
+</template>
